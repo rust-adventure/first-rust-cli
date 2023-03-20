@@ -1,4 +1,4 @@
-use std::env;
+use std::{env, fs::File};
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -19,5 +19,6 @@ status: draft
 
 "
     );
-    dbg!(new_file_contents);
+
+    let file = File::create(filename).unwrap();
 }
