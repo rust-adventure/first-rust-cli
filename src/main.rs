@@ -1,4 +1,4 @@
-use std::{env, fs::File};
+use std::{env, fs::File, io::Write};
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -20,5 +20,6 @@ status: draft
 "
     );
 
-    let file = File::create(filename).unwrap();
+    let mut file = File::create(filename).unwrap();
+    file.write_all(new_file_contents.as_bytes()).unwrap();
 }
